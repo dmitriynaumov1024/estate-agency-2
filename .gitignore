@@ -1,0 +1,8 @@
+Bin/
+bin/
+Obj/
+obj/
+Log/
+log/
+.vs/
+*.log
