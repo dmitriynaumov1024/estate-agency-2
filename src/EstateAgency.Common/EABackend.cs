@@ -7,8 +7,9 @@ namespace EstateAgency.Common
     {
         public abstract Storage<int, Location> Locations { get; }
         public abstract Storage<int, Person> Persons { get; }
-        // public abstract Storage<string, Credential> Credentials { get; }
-        // public abstract Storage<int, EstateObject> EstateObjects { get; }
+        public abstract Storage<string, Account> Accounts { get; }
+        public abstract Storage<int, EstateObject> EstateObjects { get; }
+        public abstract Storage<int, ClientWish> ClientWishes { get; }
         // public abstract Storage<Tuple<int, int>, Bookmark> Bookmarks { get; }
         // public abstract Storage<Tuple<int, int>, Match> Matches { get; }
     }
