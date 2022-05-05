@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 
 namespace EstateAgency.Common
 {
@@ -12,6 +13,7 @@ namespace EstateAgency.Common
         public string Description { get; set; }
         public int LocationId { get; set; }
         public int Price { get; set; }
+        public List<string> PhotoSources { get; set; }
     }
 
     public enum EstateObjectTypes 

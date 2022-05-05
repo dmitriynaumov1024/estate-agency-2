@@ -26,8 +26,10 @@ namespace EstateAgency.Common
             Migrate(source.Accounts, target.Accounts);
             Migrate(source.EstateObjects, target.EstateObjects);
             Migrate(source.ClientWishes, target.ClientWishes);
+            Migrate(source.Reports, target.Reports);
             Migrate(source.Bookmarks, target.Bookmarks);
             Migrate(source.Matches, target.Matches);
+            Migrate(source.Orders, target.Orders);
         }
 
         private void Migrate<TKey, TValue> (
