@@ -19,10 +19,10 @@ namespace Storage.Common
     public abstract class Storage<TValue> 
     where TValue: class, IComparable<TValue>
     {
-        public abstract void Put(TValue value);
+        public abstract bool Put(TValue value);
         public abstract IEnumerable<TValue> Filter (FilterInfo filter, int? limit = null);
         public abstract bool Contains(TValue value);
-        public abstract TValue Delete(TValue value);
+        public abstract bool Delete(TValue value);
         public abstract IEnumerable<TValue> AsEnumerable();
         public abstract bool Clear();
     }
