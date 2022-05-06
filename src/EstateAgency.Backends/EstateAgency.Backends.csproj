@@ -1,7 +1,8 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <ItemGroup>
-    <ProjectReference Include="..\EstateAgency.Common\EstateAgency.Common.csproj" />
-    <ProjectReference Include="..\Storage.Common\Storage.Common.csproj" />
+    <PackageReference Include="System.Text.Json" Version="5.0.1" />
+    <ProjectReference Include="../EstateAgency.Common/EstateAgency.Common.csproj" />
+    <ProjectReference Include="../Storage.Common/Storage.Common.csproj" />
   </ItemGroup>
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
