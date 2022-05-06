@@ -11,34 +11,50 @@ namespace Storage.Common
                 object lowerBound, 
                 object upperBound )
         {
-            return null;
+            return new FilterInfoRange {
+                PropertyName = propertyName,
+                LowerBound = lowerBound,
+                UpperBound = upperBound
+            };
         }
 
         // Create String-Starts Filter
         // based on property name and substring
         public static FilterInfo StringStarts (
                 string propertyName,
-                string subString )
+                string substring )
         {
-            return null;
+            return new FilterInfoString {
+                PropertyName = propertyName,
+                Substring = substring,
+                Position = SubstringPosition.Start
+            };
         }
 
         // Create String-Ends Filter
         // based on property name and substring
         public static FilterInfo StringEnds (
                 string propertyName,
-                string subString )
+                string substring )
         {
-            return null;
+            return new FilterInfoString {
+                PropertyName = propertyName,
+                Substring = substring,
+                Position = SubstringPosition.End
+            };
         }
 
         // Create String-Contains Filter
         // based on property name and substring
         public static FilterInfo StringContains (
                 string propertyName,
-                string subString )
+                string substring )
         {
-            return null;
+            return new FilterInfoString {
+                PropertyName = propertyName,
+                Substring = substring,
+                Position = SubstringPosition.Middle
+            };
         }
     }
 }
