@@ -13,6 +13,7 @@ namespace Storage.Common
         public abstract TValue Replace (TKey key, TValue newValue);
         public abstract TValue Delete (TKey key);
         public abstract IEnumerable<KeyValuePair<TKey, TValue>> AsEnumerable();
+        public abstract void PutMany(IEnumerable<KeyValuePair<TKey, TValue>> values);
         public abstract bool Clear();
     }
 
@@ -24,6 +25,7 @@ namespace Storage.Common
         public abstract bool Contains(TValue value);
         public abstract bool Delete(TValue value);
         public abstract IEnumerable<TValue> AsEnumerable();
+        public abstract void PutMany(IEnumerable<TValue> values);
         public abstract bool Clear();
     }
 }
