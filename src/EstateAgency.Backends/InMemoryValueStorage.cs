@@ -9,7 +9,10 @@ namespace EstateAgency.Backends
     {
         public SortedSet<TValue> Data { get; protected set; }
 
-        public InMemoryValueStorage () { }
+        public InMemoryValueStorage () 
+        {
+            this.Data = new SortedSet<TValue>();
+        }
 
         public InMemoryValueStorage (IEnumerable<TValue> source)
         {
@@ -40,6 +43,13 @@ namespace EstateAgency.Backends
         public override IEnumerable<TValue> AsEnumerable ()
         {
             return this.Data;
+        }
+
+        public override void PutMany (IEnumerable<TValue> values) 
+        {
+            foreach (TValue value in values) {
+                this.Data.Add(value);
+            }
         }
 
         public override bool Clear ()
