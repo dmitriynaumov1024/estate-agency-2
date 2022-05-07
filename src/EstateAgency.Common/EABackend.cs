@@ -14,5 +14,8 @@ namespace EstateAgency.Common
         public abstract Storage<Bookmark> Bookmarks { get; }
         public abstract Storage<Match> Matches { get; }
         public abstract Storage<Order> Orders { get; }
+
+        public abstract void Activate();
+        public abstract void Shutdown();
     }
 }
