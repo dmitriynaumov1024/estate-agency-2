@@ -17,6 +17,9 @@ namespace EstateAgency.Common
                 throw new NullReferenceException 
                     ("Source and target backends should not be null.");
             }
+
+            this.source = source;
+            this.target = target;
         }
 
         public void Migrate ()
@@ -39,9 +42,7 @@ namespace EstateAgency.Common
             where TValue: class
         {
             sTarget.Clear();
-            foreach (var kvPair in sSource.AsEnumerable()) {
-                sTarget.Replace(kvPair.Key, kvPair.Value);
-            }
+            sTarget.PutMany(sSource.AsEnumerable());
         }
 
         private void Migrate<TValue> (
@@ -50,9 +51,7 @@ namespace EstateAgency.Common
             where TValue: class, IComparable<TValue>
         {
             sTarget.Clear();
-            foreach (var item in sSource.AsEnumerable()) {
-                sTarget.Put(item);
-            }
+            sTarget.PutMany(sSource.AsEnumerable());
         }
     }
 }
