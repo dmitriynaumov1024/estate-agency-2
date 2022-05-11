@@ -1,0 +1,40 @@
+{
+  "LocationsLastKey": 3,
+  "PersonsLastKey": 2,
+  "EstateObjectsLastKey": 0,
+  "ClientWishesLastKey": 0,
+  "ReportsLastKey": 1,
+  "Locations": {
+    "1": {
+      "Region": "Запорізька область",
+      "Town": "Запоріжжя",
+      "District": ""
+    },
+    "2": {
+      "Region": "Запорізька область",
+      "Town": "Мелітополь",
+      "District": ""
+    },
+    "3": {
+      "Region": "Запорізька область",
+      "Town": "Токмак",
+      "District": ""
+    }
+  },
+  "Persons": {
+    "1": {
+      "Surname": "Naumov",
+      "Name": "Dmitriy",
+      "Phone": "343-69-420",
+      "Email": "naumov1024@gmail.com",
+      "LocationId": 2
+    }
+  },
+  "EstateObjects": {},
+  "ClientWishes": {},
+  "Reports": [],
+  "Accounts": {},
+  "Bookmarks": [],
+  "Matches": [],
+  "Orders": []
+}

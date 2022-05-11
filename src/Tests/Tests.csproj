@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <ItemGroup>
+    <PackageReference Include="System.Text.Json" Version="5.0.1" />
+    <ProjectReference Include="../Storage.Common/Storage.Common.csproj" />
+    <ProjectReference Include="../EstateAgency.Common/EstateAgency.Common.csproj" />
+    <ProjectReference Include="../EstateAgency.Backends/EstateAgency.Backends.csproj" />
+  </ItemGroup>
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+</Project>

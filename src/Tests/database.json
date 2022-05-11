@@ -1,0 +1,54 @@
+{
+  "LocationsLastKey": 3,
+  "PersonsLastKey": 3,
+  "EstateObjectsLastKey": 0,
+  "ClientWishesLastKey": 0,
+  "Locations": {
+    "1": {
+      "Region": "Запорізька область",
+      "Town": "Запоріжжя",
+      "District": ""
+    },
+    "2": {
+      "Region": "Запорізька область",
+      "Town": "Мелітополь",
+      "District": ""
+    },
+    "3": {
+      "Region": "Запорізька область",
+      "Town": "Токмак",
+      "District": ""
+    }
+  },
+  "Persons": {
+    "1": {
+      "Surname": "Naumov",
+      "Name": "Dmitriy",
+      "Phone": "343-69-420",
+      "Email": "naumov1024@gmail.com",
+      "LocationId": 2
+    },
+    "3": {
+      "Surname": "Benner",
+      "Name": "Alice",
+      "Phone": "+4-566-901-2200",
+      "Email": "abenner2002@icloud.com",
+      "LocationId": 1
+    }
+  },
+  "EstateObjects": {},
+  "ClientWishes": {},
+  "Accounts": {},
+  "Bookmarks": [],
+  "Matches": [],
+  "Orders": [],
+  "Reports": [
+    {
+      "SubmitterId": 1,
+      "ObjectId": 0,
+      "Reason": 1,
+      "Description": "irrelevant",
+      "SubmitTime": "2022-05-07T09:08:22.1619144Z"
+    }
+  ]
+}
