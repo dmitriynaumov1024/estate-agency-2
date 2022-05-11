@@ -4,21 +4,20 @@ using Storage.Common;
 
 namespace EstateAgency.Backends
 {
-    public class InMemoryIntKeyedStorage<TValue> : Storage<int, TValue>
+    public class InMemoryIntKeyedStorage<TValue> : InMemoryKeyValueStorage<int, TValue>
     where TValue: class
     {
-        public SortedDictionary<int, TValue> Data { get; protected set; }
         public int LastKey { get; protected set; }
 
         public InMemoryIntKeyedStorage () 
+            : base ()
         { 
-            this.Data = new SortedDictionary<int, TValue>();
             this.LastKey = 0;
         }
 
         public InMemoryIntKeyedStorage (IDictionary<int, TValue> source, int lastKey)
+            : base(source)
         {
-            this.Data = new SortedDictionary<int, TValue>(source);
             this.LastKey = lastKey;
         }
 
@@ -34,19 +33,6 @@ namespace EstateAgency.Backends
             }
         }
 
-        public override TValue Get (int key)
-        {
-            TValue result = null;
-            this.Data.TryGetValue(key, out result);
-            return result;
-        }
-
-        public override IEnumerable<KeyValuePair<int, TValue>> Filter (FilterInfo filter, int? limit = null)
-        {
-            // to be implemented
-            return null;
-        }
-
         public override int Put (TValue value)
         {
             this.LastKey++;
@@ -54,40 +40,15 @@ namespace EstateAgency.Backends
             return this.LastKey;
         }
 
-        public override TValue Replace (int key, TValue newValue)
-        {
-            TValue oldValue = null;
-            this.Data.TryGetValue(key, out oldValue);
-            this.Data[key] = newValue;
-            return oldValue;
-        }
-
-        public override TValue Delete (int key)
-        {
-            TValue oldValue = null;
-            this.Data.TryGetValue(key, out oldValue);
-            this.Data.Remove(key);
-            return oldValue;
-        }
-
-        public override IEnumerable<KeyValuePair<int, TValue>> AsEnumerable ()
-        {
-            return this.Data;
-        }
-
-        public override void PutMany (IEnumerable<KeyValuePair<int, TValue>> values)
-        {
-            foreach (var kvPair in values) {
-                if (this.LastKey < kvPair.Key) this.LastKey = kvPair.Key;
-                this.Data[kvPair.Key] = kvPair.Value; 
-            }
-        }
-
         public override bool Clear ()
         {
-            this.Data = new SortedDictionary<int, TValue>();
-            this.LastKey = 0;
-            return true;
+            if (base.Clear()) {
+                this.LastKey = 0;
+                return true;
+            }
+            else {
+                return false;
+            }
         }
 
         public SortedDictionary<string, TValue> StringKeyed ()
