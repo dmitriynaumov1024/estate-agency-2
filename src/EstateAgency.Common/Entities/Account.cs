@@ -4,6 +4,7 @@ namespace EstateAgency.Common
 {
     public class Account
     {
+        public int PersonId { get; set; }
         public AccountTypes AccountType { get; set; }
         public AccountStates AccountState { get; set; }
         public string PasswordHash { get; set; }
