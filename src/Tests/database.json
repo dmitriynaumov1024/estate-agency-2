@@ -4,31 +4,31 @@
   "EstateObjectsLastKey": 0,
   "ClientWishesLastKey": 0,
   "Locations": {
-    "1": {
+    "0000000001": {
       "Region": "Запорізька область",
       "Town": "Запоріжжя",
       "District": ""
     },
-    "2": {
+    "0000000002": {
       "Region": "Запорізька область",
       "Town": "Мелітополь",
       "District": ""
     },
-    "3": {
+    "0000000003": {
       "Region": "Запорізька область",
       "Town": "Токмак",
       "District": ""
     }
   },
   "Persons": {
-    "1": {
+    "0000000001": {
       "Surname": "Naumov",
       "Name": "Dmitriy",
       "Phone": "343-69-420",
       "Email": "naumov1024@gmail.com",
       "LocationId": 2
     },
-    "3": {
+    "0000000003": {
       "Surname": "Benner",
       "Name": "Alice",
       "Phone": "+4-566-901-2200",
