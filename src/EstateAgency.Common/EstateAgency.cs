@@ -25,6 +25,7 @@ namespace EstateAgency.Common
                     PersonId = null,
                     AccountState = AccountStates.NotFound,
                     AccountType = AccountTypes.Unknown,
+                    Message = "accountNotFound"
                 };
             }
             else if (acc.PasswordHash == password.Hash()) {
@@ -40,7 +41,8 @@ namespace EstateAgency.Common
                 return new AccountInfo {
                     PersonId = null, 
                     AccountState = AccountStates.WrongPassword,
-                    AccountType = AccountTypes.Unknown
+                    AccountType = AccountTypes.Unknown,
+                    Message = "wrongPassword"
                 };
             }
         }
