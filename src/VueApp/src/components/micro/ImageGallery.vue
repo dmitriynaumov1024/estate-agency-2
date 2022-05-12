@@ -18,7 +18,8 @@ export default {
     },
     methods: {
         slide (dx) {
-            this.selection = (this.selection + dx) % this.sourceList.length
+            this.selection = (this.selection + this.sourceList.length + dx) 
+                    % this.sourceList.length
         }
     }
 }

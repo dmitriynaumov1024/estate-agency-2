@@ -17,7 +17,7 @@
                 <td>Town</td>
                 <td>{{data.location.town}}</td>
             </tr>
-            <tr>
+            <tr v-if="data.location.district">
                 <td>District</td>
                 <td>{{data.location.district}}</td>
             </tr>
@@ -70,7 +70,7 @@
             </button>
         </div>
     </div>
-    <div v-else-if="error" class="card">
+    <div v-else-if="messageKey" class="card">
         <p class="text-center">{{error}}</p>
     </div>
     <div v-else class="card">
@@ -79,8 +79,6 @@
 </template>
 
 <script>
-import { Menu, MenuButton, MenuItem, MenuItems } from "@headlessui/vue"
-import { ChevronDownIcon } from "@heroicons/vue/solid"
 import ImageGallery from "./micro/ImageGallery.vue"
 import setTitle from "../modules/set-title.js"
 import axios from "axios"
@@ -89,18 +87,21 @@ export default {
     inject: ["locale", "cdnResolve", "dateFormat"],
     props: ["index"],
     components: {
-        Menu, MenuButton, MenuItem, MenuItems, ChevronDownIcon,
         ImageGallery
     },
     data () {
         return {
-            error: false,
-            data: false
+            data: undefined,
+            messageKey: undefined
         }
     },
     computed: {
         pageName () {
             return `${this.locale.ObjectView.item} #${this.index} | ${this.locale.siteName}`
+        },
+        error () {
+            return this.locale[this.messageKey] || 
+                   `${this.locale.unknownError} [${this.messageKey}]`
         }
     },
     created () {
@@ -109,26 +110,16 @@ export default {
             url: "/api/object", 
             params: { id: this.index }
         })
-        .then ( response => {
-            if (response.status == 200) {
-                var rawdata = response.data
-                if (typeof rawdata == "string") {
-                    rawdata = JSON.parse(rawdata)
-                }
-                this.data = rawdata
-                console.log(rawdata)
+        .then (r => {
+            if (r.data.message) {
+                this.messageKey = r.data.message
             }
             else {
-                this.error = true
+                this.data = r.data
             }
         })
         .catch ( error => {
-            if (error.response.data) {
-                this.error = error.response.data.error || this.locale.unknownError
-            }
-            else {
-                this.error = this.locale.unknownError
-            }
+            this.messageKey = "unknownError"
         })
     },
     mounted () {
@@ -158,7 +149,6 @@ export default {
 .object-table td {
     display: none;
     margin-bottom: 6px;
-    padding: 1px 6px;
 }
 
 .object-table td::after {
@@ -169,12 +159,14 @@ export default {
 .object-table tr>td:nth-child(1) {
     display: inline-block;
     width: 40%;
+    padding: 1px 0px;
 }
 
 .object-table tr>td:nth-child(2) {
     display: inline-block;
     width: 60%;
     border-bottom: 1px solid var(--color-bg-3);
+    padding: 1px 4px;
 }
 
 .tag {

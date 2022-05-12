@@ -36,6 +36,9 @@ export default {
     computed: {
         imageSources () {
             return this.files.map (f => URL.createObjectURL(f))
+        },
+        pageName () {
+            return `${this.locale.CreateObjectView.title} | ${this.locale.siteName}`
         }
     },
     methods: {
@@ -48,6 +51,12 @@ export default {
         revoke (url) {
             URL.revokeObjectURL(url)
         }
+    },
+    mounted () {
+        setTitle(this.pageName)
+    },
+    updated () {
+        setTitle(this.pageName)
     }
 }
 </script>

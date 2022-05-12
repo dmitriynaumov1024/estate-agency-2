@@ -9,6 +9,7 @@ import GuestView from "./components/GuestView.vue"
 import LoginView from "./components/LoginView.vue"
 import SignupView from "./components/SignupView.vue"
 import CreateObjectView from "./components/CreateObjectView.vue"
+import MyObjectsView from "./components/MyObjectsView.vue"
 
 import "./css/style.css"
 
@@ -22,7 +23,8 @@ const myRouter = VueRouter.createRouter({
         { path: "/guest", component: GuestView },
         { path: "/login", component: LoginView },
         { path: "/signup", component: SignupView },
-        { path: "/createobject", component: CreateObjectView }
+        { path: "/createobject", component: CreateObjectView },
+        { path: "/my-objects", component: MyObjectsView }
     ]
 })
 

@@ -82,13 +82,13 @@ export default {
             "userId": computed(()=> this.userId),
             "cdnResolve": cdnResolve,
             "dateFormat": dateFormat,
-            "logIn": this.logIn
+            "logIn": this.logIn,
+            "signUp": this.signUp
         }
     },
     created () {
         setTitle(this.locale.siteName)
         L.onChange(() => {
-            console.log("Locale changed")
             this.locale = L.locale()
         })
     },
@@ -99,21 +99,28 @@ export default {
         localeSelected () {
             L.setLocale(this.localeKey)
         },
-        logIn (phone, password) {
-            return ( axios({
-                method: "post",
-                url: "/api/login",
-                data: new URLSearchParams({
-                    phone: phone,
-                    password: password
-                })
+        restoreSession () {
+            axios.get ("/api/restore-session")
+            .then (r => {
+                if (r.data.userId) {
+                    this.userId = r.data.userId
+                }
             })
-            .then ( response => {
-                if (response.data.userId) {
-                    this.userId = response.data.userId
+        },
+        logIn (phone, password) {
+            return  axios.post("/api/login", {
+                phone: phone,
+                password: password
+            })
+            .then (r => {
+                if (r.data.userId) {
+                    this.userId = r.data.userId
                     this.$router.push("/account")
                 }
-            }))
+            })
+        },
+        signUp () {
+
         }
     }
 }
