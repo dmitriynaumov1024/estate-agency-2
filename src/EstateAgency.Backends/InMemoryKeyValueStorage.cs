@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Storage.Common;
 
 namespace EstateAgency.Backends
@@ -38,7 +39,11 @@ namespace EstateAgency.Backends
         public override IEnumerable<KeyValuePair<TKey, TValue>> Filter (FilterInfo filter, int? limit = null)
         {
             // to be implemented
-            return null;
+            var result = this.Data.Where(kvPair => FilterExtensions.Apply(filter, kvPair.Value));
+            if (limit != null) {
+                result = result.Take((int)limit);
+            }
+            return result;
         }
 
         public override TValue Replace (TKey key, TValue newValue)

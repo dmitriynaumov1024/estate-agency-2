@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Storage.Common;
 
 namespace EstateAgency.Backends
@@ -27,7 +28,11 @@ namespace EstateAgency.Backends
         public override IEnumerable<TValue> Filter (FilterInfo filter, int? limit = null)
         {
             // to be implemented
-            return null;
+            var result = this.Data.Where(val => FilterExtensions.Apply(filter, val));
+            if (limit != null) {
+                result = result.Take((int)limit);
+            }
+            return result;
         }
 
         public override bool Contains (TValue value)
