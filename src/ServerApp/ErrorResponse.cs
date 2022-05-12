@@ -4,6 +4,13 @@ namespace ServerApp
 {
     public class ErrorResponse
     {
-        public string Error { get; set; }
+        public string Message { get; set; }
+
+        public ErrorResponse () { }
+
+        public ErrorResponse (string message)
+        {
+            this.Message = message;
+        }
     }
 }

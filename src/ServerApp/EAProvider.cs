@@ -1,6 +1,7 @@
 using System;
 using EstateAgency.Common;
 using EstateAgency.Backends;
+using Microsoft.AspNetCore.Mvc;
 
 namespace ServerApp 
 {
@@ -8,11 +9,13 @@ namespace ServerApp
     {
         private static string fPath = "./database.json";
         private static EABackend backend = null;
+        private static EstateAgency.Common.EstateAgency agency = null;
 
         public static void Init ()
         {
             backend = new FileBackend(fPath);
             backend.Activate();
+            agency = new EstateAgency.Common.EstateAgency(backend);
         }
 
         public static void Shutdown ()
@@ -20,13 +23,9 @@ namespace ServerApp
             backend.Shutdown();
         }
 
-        public static EABackend EA (this object obj)
+        public static EstateAgency.Common.EstateAgency EA (this ControllerBase obj)
         {
-            return backend;
-        }
-
-        public static EABackend Instance {
-            get { return backend; }
+            return agency;
         }
     }
 }

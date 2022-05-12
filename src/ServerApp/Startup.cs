@@ -40,15 +40,9 @@ namespace ServerApp
                 app.UseRouting();
                 app.UseSession();
                 // Nested branches!
-                app.UseEndpoints ( endpoints => {
-                    endpoints.MapGet ("/person", Handlers.GetPerson);
-                    endpoints.MapGet ("/object", Handlers.GetObject);
-
-                    endpoints.MapPost ("/login", Handlers.PostLogin);
-                    endpoints.MapPost ("/signup", Handlers.PostSignup);
+                app.UseEndpoints(endpoints => {
+                    endpoints.MapControllers();
                 });
-                // Fallback
-                app.Run (Handlers.ApiHandler);
             });
 
             // Here, index.html is served. 
