@@ -37,8 +37,11 @@
     <div class="footer">
         <div class="width-container">
             <span>
-                &copy; 2022 Dmitriy Naumov |
-                <a href="https://github.com/dmitriynaumov1024" target="blank">My github</a>
+                &copy; 2022 Dmitriy Naumov &ensp; | &ensp;
+                <a href="https://github.com/dmitriynaumov1024" 
+                    target="blank" class="text-link">
+                    My github
+                </a>
             </span>
         </div>
     </div>
@@ -87,6 +90,7 @@ export default {
         }
     },
     created () {
+        this.restoreSession();
         setTitle(this.locale.siteName)
         L.onChange(() => {
             this.locale = L.locale()
@@ -102,22 +106,23 @@ export default {
         restoreSession () {
             axios.get ("/api/restore-session")
             .then (r => {
-                if (r.data.userId) {
-                    this.userId = r.data.userId
+                if (r.data.personId) {
+                    this.userId = r.data.personId
                 }
             })
         },
         logIn (phone, password) {
-            return  axios.post("/api/login", {
+            var promise = axios.post ("/api/login", {
                 phone: phone,
                 password: password
             })
-            .then (r => {
-                if (r.data.userId) {
-                    this.userId = r.data.userId
+            promise.then (r => {
+                if (r.data.personId) {
+                    this.userId = r.data.personId
                     this.$router.push("/account")
                 }
             })
+            return promise
         },
         signUp () {
 

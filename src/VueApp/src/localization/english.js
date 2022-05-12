@@ -8,6 +8,7 @@ export default {
     notLoggedIn: "You are not logged in. Please log in or sign up to continue.",
     notAllowed: "Your level of permissions does not allow you to see this.",
     accountNotFound: "Account not found.",
+    wrongPassword: "Password is wrong.",
     HomeView: {
         link: "Home",
         title: "Main page",

@@ -13,7 +13,7 @@
                     required class="margin-after">
             </div>
             <div class="margin-4-after">
-                <span class="error-msg">{{error}}&ensp;</span>
+                <span v-if="messageKey" class="error-msg">{{error}}&ensp;</span>
             </div>
             <div class="flex-strip flex-center">
                 <button @click="submit" class="button button-primary button-wider">
@@ -33,34 +33,28 @@ export default {
         return {
             phone: "",
             password: "",
-            error: undefined,
-            errorTarget: undefined
+            messageKey: undefined
         }
     },
     computed: {
         pageName () {
             return `${this.locale.LoginView.title} | ${this.locale.siteName}`
+        },
+        error () {
+            return this.locale[this.messageKey] || 
+                   `${this.locale.unknownError} [${this.messageKey}]`
         }
     },
     methods: {
         submit () {
             this.logIn (this.phone, this.password)
-            .then (response => {
-                if (response.data.error) {
-                    this.error = response.data.error
-                    this.errorTarget = response.data.errorTarget
-                }
-                else {
-                    this.error = undefined
-                }
+            .then (r => {
+                console.log(r)
+                this.messageKey = r.data.message
             })
             .catch (error => {
-                if (error.response.data) {
-                    this.error = error.response.data.error || this.locale.unknownError
-                }
-                else {
-                    this.error = this.locale.unknownError
-                }
+                console.log(error)
+                this.messageKey = "unknownError"
             })
         }
     },

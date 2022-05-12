@@ -1,36 +1,35 @@
 <template>
     <div v-if="data" class="card">
         <ImageGallery :sourceList="data.item.photoSources" />
-        <h2>{{locale.ObjectView.item}} #{{index}}</h2>
         <p><b>{{data.item.caption}}</b></p>
         <p>{{data.item.description}}</p>
         <table class="object-table margin-after">
             <tr>
-                <td>Posted on</td>
+                <td>{{locale.ObjectView.label.postDate}}</td>
                 <td>{{dateFormat(data.item.postDate)}}</td>
             </tr>
             <tr>
-                <td>Region</td>
+                <td>{{locale.ObjectView.label.region}}</td>
                 <td>{{data.location.region}}</td>
             </tr>
             <tr>
-                <td>Town</td>
+                <td>{{locale.ObjectView.label.town}}</td>
                 <td>{{data.location.town}}</td>
             </tr>
             <tr v-if="data.location.district">
-                <td>District</td>
+                <td>{{locale.ObjectView.label.district}}</td>
                 <td>{{data.location.district}}</td>
             </tr>
             <tr>
-                <td>Address</td>
+                <td>{{locale.ObjectView.label.address}}</td>
                 <td>{{data.item.address}}</td>
             </tr>
             <tr>
-                <td>Square meters</td>
+                <td>{{locale.ObjectView.label.squareMeters}}</td>
                 <td>{{data.item.squareMeters}}</td>
             </tr>
             <tr>
-                <td>Tags</td>
+                <td>{{locale.ObjectView.label.tags}}</td>
                 <td class="flex-strip flex-i">
                     <span v-for="(val, key) in data.item.tags" 
                         class="tag">
@@ -39,13 +38,13 @@
                 </td>
             </tr>
             <tr>
-                <td>Price</td>
+                <td>{{locale.ObjectView.label.price}}</td>
                 <td><b>{{data.item.price}}</b></td>
             </tr>
         </table>
         <table class="object-table margin-after">
             <tr>
-                <td>Seller</td>
+                <td>{{locale.ObjectView.label.seller}}</td>
                 <td>{{data.seller.name}} {{data.seller.surname}}</td>
             </tr>
             <tr>
@@ -60,13 +59,13 @@
         <div class="flex-strip">
             <span class="spacer"></span>
             <button class="button">
-                {{locale.ObjectView.actionBookmark}}
+                {{locale.ObjectView.action.bookmark}}
             </button>
             <button class="button">
-                {{locale.ObjectView.actionOrder}}
+                {{locale.ObjectView.action.order}}
             </button>
             <button class="button">
-                {{locale.ObjectView.actionReport}}
+                {{locale.ObjectView.action.report}}
             </button>
         </div>
     </div>
@@ -84,7 +83,7 @@ import setTitle from "../modules/set-title.js"
 import axios from "axios"
 
 export default {
-    inject: ["locale", "cdnResolve", "dateFormat"],
+    inject: ["locale", "dateFormat"],
     props: ["index"],
     components: {
         ImageGallery
