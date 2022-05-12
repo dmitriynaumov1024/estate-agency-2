@@ -6,15 +6,16 @@ namespace Tests
     public class Program
     {
         static readonly string 
-            HELP_STRING = "Usage: <test-name>\n",
-            TEST_ID_LIST = "list";
+            HELP_STRING = "Usage: <test-name>\n";
 
         static Dictionary<string, Action> KnownTests = 
             new Dictionary<string, Action> {
             { "simple", SimpleTest.Run },
             { "dbtest", DbTest.Run },
             { "dbgen", DbGenerator.Run },
-            { "hash", HashTest.Run }
+            { "hash", HashTest.Run },
+            { "filters", FilterTest.Run },
+            { "filter2", FilterTest.Run2 },
         };
 
         public static void Main(string[] args)
