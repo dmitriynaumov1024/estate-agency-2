@@ -2,14 +2,24 @@ using System;
 
 namespace Storage.Common
 {
-    public static class Filters
+    public static class Filter
     {
+        public static FilterInfo Exact ( 
+                string propertyName, 
+                object value )
+        {
+            return new FilterInfoExact {
+                PropertyName = propertyName,
+                Value = value
+            };
+        }
+
         // Create Range Filter for any type
         // based on property name and range bounds 
         public static FilterInfo Range ( 
                 string propertyName, 
-                object lowerBound, 
-                object upperBound )
+                IComparable lowerBound, 
+                IComparable upperBound )
         {
             return new FilterInfoRange {
                 PropertyName = propertyName,

@@ -28,8 +28,8 @@ namespace Storage.Common
     public class FilterInfoRange : FilterInfo
     {
         public string PropertyName { get; set; }
-        public object LowerBound { get; set; }
-        public object UpperBound { get; set; }
+        public IComparable LowerBound { get; set; }
+        public IComparable UpperBound { get; set; }
     }
 
     public class FilterInfoString : FilterInfo
