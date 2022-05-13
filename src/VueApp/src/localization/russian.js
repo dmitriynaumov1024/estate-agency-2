@@ -19,7 +19,7 @@ export default {
     },
     ExploreView: {
         link: "Объекты",
-        title: "Объекты",
+        title: "Объекты недвижимости",
         activeObject: "Активный объект"
     },
     ObjectView: {
@@ -109,5 +109,24 @@ export default {
         link: "Моя недвижимость",
         title: "Моя недвижимость",
         heading: "Моя недвижимость"
+    },
+    CreateObjectView: {
+        title: "Новый объект недвижимости",
+        action: {
+            submit: "Опубликовать",
+            selectPhotos: "Добавить фото"
+        },
+        label: {
+            objectType: "Тип объекта",
+            caption: "Заголовок",
+            description: "Описание",
+            region: "Область",
+            town: "Город / насел.пункт",
+            district: "Район",
+            address: "Адрес",
+            squareMeters: "Площадь, кв.м",
+            tags: "Теги",
+            price: "Цена, у.е.",
+        }
     }
 }

@@ -91,7 +91,7 @@ export default {
                 }
             })
         },
-        logIn (phone, password) {
+        logIn (phone, password, next = undefined) {
             var promise = axios.post ("/api/login", {
                 phone: phone,
                 password: password
@@ -99,17 +99,17 @@ export default {
             promise.then (r => {
                 if (r.data.personId) {
                     this.userId = r.data.personId
-                    this.$router.push("/account")
+                    this.$router.push(next || "/account")
                 }
             })
             return promise
         },
-        signUp (data) {
+        signUp (data, next) {
             var promise = axios.post ("/api/signup", data)
             promise.then (r => {
                 if (r.data.personId) {
                     this.userId = r.data.personId
-                    this.$router.push("/account")
+                    this.$router.push(next || "/account")
                 }
             })
             return promise

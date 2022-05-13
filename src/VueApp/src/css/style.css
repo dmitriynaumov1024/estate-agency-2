@@ -307,6 +307,16 @@ p {
     max-width: unset;
 }
 
+.button-big {
+    display: block;
+    width: 100%;
+    max-width: unset;
+    border-radius: 4px;
+    padding: 5px;
+    text-align: center;
+    margin-bottom: 1px;
+}
+
 /* text input ---------------- */
 input[type="text"], 
 input[type="password"], 

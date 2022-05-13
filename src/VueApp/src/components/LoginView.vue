@@ -29,6 +29,7 @@ import setTitle from "../modules/set-title.js"
 
 export default {
     inject: ["locale", "logIn"],
+    props: ["next"],
     data () {
         return {
             phone: "",
@@ -47,7 +48,8 @@ export default {
     },
     methods: {
         submit () {
-            this.logIn (this.phone, this.password)
+            console.log(this.next)
+            this.logIn (this.phone, this.password, this.next)
             .then (r => {
                 console.log(r)
                 this.messageKey = r.data.message

@@ -111,5 +111,24 @@ export default {
         link: "My objects",
         title: "My objects",
         heading: "My estate objects"
+    },
+    CreateObjectView: {
+        title: "New Estate Object",
+        action: {
+            submit: "Submit",
+            selectPhotos: "Select photos"
+        },
+        label: {
+            objectType: "Object type",
+            caption: "Caption",
+            description: "Description",
+            region: "Region",
+            town: "Town",
+            district: "District",
+            address: "Address",
+            squareMeters: "Area, sq.m.",
+            tags: "Tags",
+            price: "Price, US$"
+        }
     }
 }

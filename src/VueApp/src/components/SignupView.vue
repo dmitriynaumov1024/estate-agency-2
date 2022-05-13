@@ -58,6 +58,7 @@ import setTitle from "../modules/set-title.js"
 
 export default {
     inject: ["locale", "signUp"],
+    props: ["next"],
     data () {
         return {
             phone: "",
@@ -119,7 +120,7 @@ export default {
                 phone: this.phone,
                 password: this.password,
                 email: this.email
-            })
+            }, this.next)
         }
     },
     mounted () {

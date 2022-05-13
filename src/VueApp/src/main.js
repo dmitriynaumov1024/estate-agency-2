@@ -23,8 +23,10 @@ const myRouter = VueRouter.createRouter({
         { path: "/object/:index", name: "object", component: ObjectView, props: true },
         { path: "/account", component: AccountView },
         { path: "/guest", component: GuestView },
-        { path: "/login", component: LoginView },
-        { path: "/signup", component: SignupView },
+        { path: "/login", component: LoginView, 
+          props: route => ({ next: route.query.next }) },
+        { path: "/signup", component: SignupView, 
+          props: route => ({ next: route.query.next }) },
         { path: "/createobject", component: CreateObjectView },
         { path: "/my-objects", component: MyObjectsView }
     ]
