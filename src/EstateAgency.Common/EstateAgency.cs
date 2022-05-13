@@ -10,6 +10,10 @@ namespace EstateAgency.Common
     {
         protected EABackend backend;
 
+        public EABackend Backend {
+            get { return this.backend; }
+        }
+
         public EstateAgency(EABackend backend)
         {
             this.backend = backend;
@@ -133,12 +137,13 @@ namespace EstateAgency.Common
 
         public List<MiniObjectInfo> GetTopEstateObjects ()
         {
+            List<string> EmptyList = new List<string> { "a" };
             return this.backend.EstateObjects.AsEnumerable()
                 .OrderByDescending(kv => kv.Value.PostDate)
                 .Take(10)
                 .Select(kv => new MiniObjectInfo {
                     Index = kv.Key,
-                    PhotoSource = kv.Value.PhotoSources[0],
+                    PhotoSource = (kv.Value.PhotoSources ?? EmptyList).FirstOrDefault(),
                     Description = kv.Value.Description,
                     PostDate = kv.Value.PostDate,
                     Address = kv.Value.Address,
