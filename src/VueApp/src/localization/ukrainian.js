@@ -5,6 +5,7 @@ export default {
     comingSoon: "Coming soon",
     unknownError: "Сталася невідома помилка. Спробуйте ще раз.",
     loading: "Завантаження...",
+    seeMore: "Більше",
     notLoggedIn: "Ви не увійшли в обліковий запис. Будь ласка, увійдіть або зареєструйтеся щоб продовжити.",
     notAllowed: "На жаль, Ви не можете переглядати це.",
     accountNotFound: "Обліковий запис не знайдено.",
@@ -12,7 +13,9 @@ export default {
     HomeView: {
         link: "Головна",
         title: "Головна сторінка",
-        heading: "Це головна сторінка."
+        heading: "Це головна сторінка.",
+        usefulLinks: "Корисні посилання",
+        technologies: "Технології"
     },
     ExploreView: {
         link: "Об'єкти",
@@ -84,9 +87,21 @@ export default {
         heading: "Реєстрація",
         placeholder: {
             phone: "телефон",
+            email: "е-mail",
             password: "пароль",
             name: "ім'я",
             surname: "прізвище"
+        },
+        label: {
+            surname: "Прізвище",
+            name: "Ім'я",
+            phone: "Телефон",
+            password: "Пароль",
+            passwordRepeat: "Повторіть пароль",
+            email: "E-mail",
+            region: "Область",
+            town: "Місто / насел.пункт",
+            district: "Район (необов'язково)"
         },
         signupButton: "Зареєструватися"
     },

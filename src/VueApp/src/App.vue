@@ -13,20 +13,7 @@
                 {{locale.AccountView.link}}
             </router-link>
             <span class="spacer"></span>
-            <Listbox v-model="localeKey" as="div" class="pos-relative">
-                <ListboxButton class="button flex-strip flex-i">
-                    <span>{{locale.nativeName}}</span>
-                    <ChevronDownIcon class="icon" />
-                </ListboxButton>
-                <ListboxOptions as="div" class="dropdown pad-8px">
-                    <ListboxOption as="span" class="dropdown-item"
-                        v-for="(val, key) in allLocales" 
-                        :key="key" :value="key"
-                        @click="localeSelected">
-                        {{val.nativeName}}
-                    </ListboxOption>
-                </ListboxOptions>
-            </Listbox>
+            <LocaleSelector @change="localeSelected" />
         </div>
     </div>
     <div class="main">
@@ -51,25 +38,17 @@
 import { computed } from "vue"
 import axios from "axios"
 
-import { Listbox, ListboxLabel, ListboxButton, ListboxOptions, ListboxOption } 
-from "@headlessui/vue"
-
-import { ChevronDownIcon } from "@heroicons/vue/solid"
-
 import L from "./locales.js"
 import S from "./storage.js"
 import setTitle from "./modules/set-title.js"
 import cdnResolve from "./modules/cdn-resolve.js"
 import dateFormat from "./modules/date-format.js"
 
+import LocaleSelector from "./components/micro/LocaleSelector.vue"
+
 export default {
     components: {
-        Listbox,
-        ListboxLabel,
-        ListboxButton,
-        ListboxOptions,
-        ListboxOption,
-        ChevronDownIcon 
+        LocaleSelector
     },
     data () {
         return { 
@@ -86,7 +65,8 @@ export default {
             "cdnResolve": cdnResolve,
             "dateFormat": dateFormat,
             "logIn": this.logIn,
-            "signUp": this.signUp
+            "signUp": this.signUp,
+            "allLocales": this.allLocales
         }
     },
     created () {
@@ -100,8 +80,8 @@ export default {
         setTitle(this.locale.siteName)
     },
     methods: {
-        localeSelected () {
-            L.setLocale(this.localeKey)
+        localeSelected (key) {
+            L.setLocale (key)
         },
         restoreSession () {
             axios.get ("/api/restore-session")
@@ -124,8 +104,15 @@ export default {
             })
             return promise
         },
-        signUp () {
-
+        signUp (data) {
+            var promise = axios.post ("/api/signup", data)
+            promise.then (r => {
+                if (r.data.personId) {
+                    this.userId = r.data.personId
+                    this.$router.push("/account")
+                }
+            })
+            return promise
         }
     }
 }

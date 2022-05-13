@@ -183,6 +183,10 @@ p {
     justify-content: space-around;
 }
 
+.flex-grow {
+    flex-grow: 1;
+}
+
 .text-center {
     text-align: center;
 }
@@ -273,6 +277,12 @@ p {
 .button-primary:focus {
     background-color: var(--color-accent-2);
     border-color: var(--color-accent-2);
+    color: var(--color-bg-0);
+}
+
+.button-primary:disabled {
+    background-color: var(--color-bg-3);
+    border-color: var(--color-bg-3);
     color: var(--color-bg-0);
 }
 

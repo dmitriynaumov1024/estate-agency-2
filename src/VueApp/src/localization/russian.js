@@ -5,6 +5,7 @@ export default {
     comingSoon: "Coming soon",
     unknownError: "Произошла неизвестная ошибка. Попробуйте еще раз.",
     loading: "Загрузка...",
+    seeMore: "Больше",
     notLoggedIn: "Вы не вошли в учетную запись. Войдите или зарегистрируйтесь чтобы продолжить.",
     notAllowed: "К сожалению, Вы не имеете доступ к этому.",
     accountNotFound: "Учетная запись не найдена.",
@@ -12,7 +13,9 @@ export default {
     HomeView: {
         link: "Главная",
         title: "Главная страница",
-        heading: "Это главная страница."
+        heading: "Это главная страница.",
+        usefulLinks: "Полезные ссылки",
+        technologies: "Технологии"
     },
     ExploreView: {
         link: "Объекты",
@@ -84,9 +87,21 @@ export default {
         heading: "Регистрация",
         placeholder: {
             phone: "телефон",
+            email: "e-mail",
             password: "пароль",
             name: "имя",
             surname: "фамилия"
+        },
+        label: {
+            surname: "Фамилия",
+            name: "Имя",
+            password: "Пароль",
+            passwordRepeat: "Повторите пароль",
+            phone: "Телефон",
+            email: "E-mail",
+            region: "Регион",
+            town: "Город / насел.пункт",
+            district: "Район (необязательно)",
         },
         signupButton: "Зарегистрироваться"
     },

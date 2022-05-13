@@ -1,5 +1,7 @@
 import * as Vue from "vue"
 import * as VueRouter from "vue-router"
+import axios from "axios"
+
 import App from "./App.vue"
 import HomeView from "./components/HomeView.vue"
 import ExploreView from "./components/ExploreView.vue"
@@ -27,6 +29,8 @@ const myRouter = VueRouter.createRouter({
         { path: "/my-objects", component: MyObjectsView }
     ]
 })
+
+window.axios = axios
 
 var app = Vue.createApp(App)
 app.config.unwrapInjectedRef = true

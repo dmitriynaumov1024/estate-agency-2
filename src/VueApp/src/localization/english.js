@@ -5,6 +5,7 @@ export default {
     comingSoon: "Coming soon",
     unknownError: "An unknown error occured. Please try again.",
     loading: "Loading...",
+    seeMore: "See more",
     notLoggedIn: "You are not logged in. Please log in or sign up to continue.",
     notAllowed: "Your level of permissions does not allow you to see this.",
     accountNotFound: "Account not found.",
@@ -12,7 +13,9 @@ export default {
     HomeView: {
         link: "Home",
         title: "Main page",
-        heading: "This is a home page."
+        heading: "This is a home page.",
+        usefulLinks: "Useful links",
+        technologies: "Used technologies"
     },
     ExploreView: {
         link: "Explore",
@@ -86,9 +89,21 @@ export default {
         heading: "Create account",
         placeholder: {
             phone: "phone",
+            email: "e-mail",
             password: "password",
             name: "name",
             surname: "surname",
+        },
+        label: {
+            phone: "Phone",
+            email: "E-mail",
+            password: "Password",
+            passwordRepeat: "Repeat password",
+            name: "First name",
+            surname: "Surname",
+            region: "Region",
+            town: "Town",
+            district: "District"
         },
         signupButton: "Sign up"
     },

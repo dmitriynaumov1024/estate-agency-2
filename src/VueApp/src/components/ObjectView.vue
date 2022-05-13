@@ -1,6 +1,8 @@
 <template>
     <div v-if="data" class="card">
-        <ImageGallery :sourceList="data.item.photoSources" />
+        <div class="margin-after">
+            <ImageGallery :sourceList="data.item.photoSources" />
+        </div>
         <p><b>{{data.item.caption}}</b></p>
         <p>{{data.item.description}}</p>
         <table class="object-table margin-after">
@@ -56,7 +58,7 @@
                 <td>{{data.seller.email}}</td>
             </tr>
         </table>
-        <div class="flex-strip">
+        <div class="flex-strip" v-if="userId">
             <span class="spacer"></span>
             <button class="button">
                 {{locale.ObjectView.action.bookmark}}
@@ -83,7 +85,7 @@ import setTitle from "../modules/set-title.js"
 import axios from "axios"
 
 export default {
-    inject: ["locale", "dateFormat"],
+    inject: ["locale", "dateFormat", "userId"],
     props: ["index"],
     components: {
         ImageGallery
