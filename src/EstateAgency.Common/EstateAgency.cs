@@ -131,5 +131,19 @@ namespace EstateAgency.Common
                 .Filter(Filter.Exact("PersonId", id));
         }
 
+        public List<MiniObjectInfo> GetTopEstateObjects ()
+        {
+            return this.backend.EstateObjects.AsEnumerable()
+                .OrderByDescending(kv => kv.Value.PostDate)
+                .Take(10)
+                .Select(kv => new MiniObjectInfo {
+                    Index = kv.Key,
+                    PhotoSource = kv.Value.PhotoSources[0],
+                    Description = kv.Value.Description,
+                    PostDate = kv.Value.PostDate,
+                    Address = kv.Value.Address,
+                    Price = kv.Value.Price
+                }).ToList();
+        }
     }
 }
