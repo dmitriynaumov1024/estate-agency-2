@@ -26,5 +26,11 @@ namespace ServerApp
                 ["bookmarkCount"] = this.EA().GetObjectBookmarksCount((int)id)
             };
         }
+
+        [HttpGet("/objects/top")]
+        public ActionResult<object> GetTopEstateObjects ()
+        {
+            return this.EA().GetTopEstateObjects();
+        }
     }
 }
