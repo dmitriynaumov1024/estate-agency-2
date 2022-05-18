@@ -48,7 +48,6 @@ export default {
     },
     methods: {
         submit () {
-            console.log(this.next)
             this.logIn (this.phone, this.password, this.next)
             .then (r => {
                 console.log(r)

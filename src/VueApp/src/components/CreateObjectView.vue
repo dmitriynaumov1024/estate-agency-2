@@ -166,8 +166,7 @@ export default {
                 }
                 var f = new FormData()
                 f.append("objectId", r.data)
-                var fileArray = [...this.$refs["files-input"].files]
-                fileArray.forEach(file => {
+                this.files.forEach (file => {
                     f.append("photos", file)
                 })
                 console.log(f)
