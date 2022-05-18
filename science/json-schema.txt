@@ -1,0 +1,73 @@
+{
+  LocationsLastKey: Number,
+  PersonsLastKey: Number,
+  EstateObjectsLastKey: Number,
+  ClientWishesLastKey: Number,
+  Locations: [{
+    key: String,
+    value: {
+      Region: String,
+      Town: String,
+      District: String
+    }
+  }],
+  Persons: [{
+    key: String,
+    value: {
+      Surname: String,
+      Name: String,
+      Phone: String,
+      Email: String,
+      LocationId: Number
+    }
+  }],
+  EstateObjects: [{
+    key: String,
+    value: {
+      IsActive: Boolean,
+      ObjectType: Number,
+      SellerId: Number,
+      PostDate: String,
+      Caption: String,
+      Description: String,
+      Address: String,
+      LocationId: String,
+      Price: Number,
+      SquareMeters: Number,
+      Tags: [String],
+      PhotoSources: [String]
+    }
+  }],
+  ClientWishes: [{
+    key: String,
+    value: {
+      IsOpen: Boolean,
+      ObjectType: Number,
+      UserId: Number,
+      PostDate: String,
+      Description: String
+    }
+  }],
+  Bookmarks: [{
+   PersonId: Number,
+   ObjectId: Number 
+  }],
+  Orders: [{
+    PersonId: Number,
+    ObjectId: Number,
+    OrderTime: String,
+    AssignedAgentId: Number
+  }],
+  Matches: [{
+    PersonId: Number,
+    ObjectId: Number,
+    MatchTime: String
+  }],
+  Reports: [{
+    SubmitterId: Number,
+    ObjectId: Number,
+    Reason: Number,
+    Description: String,
+    SubmitTime: String
+  }]
+}
